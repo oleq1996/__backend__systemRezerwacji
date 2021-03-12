@@ -13,4 +13,6 @@ System oparty o architekturę klient-serwer. Umożliwia użytkownikowi zarezerwo
 ## Endpointy
 //TODO
 ## Projekt bazy danych
-//TODO
+Obecna testowa baza danych.
+![image](https://user-images.githubusercontent.com/56149109/111000022-93493380-8381-11eb-8887-215a738dbabb.png)
+
