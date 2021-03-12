@@ -14,5 +14,5 @@ System oparty o architekturę klient-serwer. Umożliwia użytkownikowi zarezerwo
 //TODO
 ## Projekt bazy danych
 Obecna testowa baza danych.
-![image](https://user-images.githubusercontent.com/56149109/111000022-93493380-8381-11eb-8887-215a738dbabb.png)
 
+![image](https://user-images.githubusercontent.com/56149109/111000127-c55a9580-8381-11eb-8f31-98c5d893ae2e.png)
