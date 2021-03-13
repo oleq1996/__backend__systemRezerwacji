@@ -2,7 +2,7 @@
 
 Aplikacja pobiera dane z bazy danych na serwerze uczelnianym i zwraca je wszystkie.
 
-Pliki wykonywalne .jar znajdują się w folderze jar'y
+Pliki wykonywalne .jar znajdują się w folderze cinema/jar's
 
 Uruchomienie:
   * wpisujemy w konsoli w lokalizacji pliku .jar:
