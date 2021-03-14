@@ -1,7 +1,7 @@
 package codeBang.cinema.controllers;
 
-import codeBang.cinema.domain.Test;
-import codeBang.cinema.services.TestService;
+import codeBang.cinema.domain.Videos;
+import codeBang.cinema.services.VideosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,12 +11,12 @@ import java.util.List;
 
 @RequestMapping("cinema")
 @RestController
-public class TestController {
+public class CinemaRestController {
     @Autowired
-    private TestService testService;
+    private VideosService videosService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")
-    public List<Test> getAllTestData() {
-        return testService.getAllTestData();
+    public List<Videos> getAllTestData() {
+        return videosService.getAllTestData();
     }
 }
