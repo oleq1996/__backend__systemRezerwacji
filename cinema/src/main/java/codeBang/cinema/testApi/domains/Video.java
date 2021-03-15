@@ -1,6 +1,4 @@
-package codeBang.cinema.domain;
-
-import com.sun.istack.Nullable;
+package codeBang.cinema.testApi.domains;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="videos")
-public class Videos {
+public class Video {
 
     @Id
     private Integer id;
@@ -16,15 +14,15 @@ public class Videos {
     private String genre;
     private String duration;
     private String description;
-    private int premiere_year;
-    private int age_restriction;
-    private boolean subtitles;
-    private boolean dubbing;
+    private Integer premiere_year;
+    private Integer age_restriction;
+    private Boolean subtitles;
+    private Boolean dubbing;
     private String language;
     private String url_poster;
     private String url_trailer;
 
-    public Videos(Integer id, String title, String genre, String duration, String description, int premiere_year, int age_restriction, boolean subtitles, boolean dubbing, String language, String url_poster, String url_trailer) {
+    public Video(Integer id, String title, String genre, String duration, String description, Integer premiere_year, Integer age_restriction, Boolean subtitles, Boolean dubbing, String language, String url_poster, String url_trailer) {
         this.id = id;
         this.title = title;
         this.genre = genre;
@@ -39,7 +37,7 @@ public class Videos {
         this.url_trailer = url_trailer;
     }
 
-    public Videos() {
+    public Video() {
 
     }
 
