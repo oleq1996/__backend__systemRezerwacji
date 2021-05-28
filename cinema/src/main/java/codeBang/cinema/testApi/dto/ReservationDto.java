@@ -1,37 +1,15 @@
-package codeBang.cinema.testApi.domains;
+package codeBang.cinema.testApi.dto;
 
-import org.springframework.context.annotation.Lazy;
+public class ReservationDto {
 
-import javax.persistence.*;
-
-
-@Entity
-@Table(name="reservations")
-public class Reservation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String email;
     private Integer playing_id;
     private Integer seat_id;
 
-    public Reservation(String email, Integer playing_id, Integer seat_id) {
+    public ReservationDto(String email, Integer playing_id, Integer seat_id) {
         this.email = email;
         this.playing_id = playing_id;
         this.seat_id = seat_id;
-    }
-
-    public Reservation() {
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -50,11 +28,12 @@ public class Reservation {
         this.playing_id = playing_id;
     }
 
+    public Integer getSeat_id() {
+        return seat_id;
+    }
+
     public void setSeat_id(Integer seat_id) {
         this.seat_id = seat_id;
     }
 
-    public Integer getSeat_id() {
-        return seat_id;
-    }
 }

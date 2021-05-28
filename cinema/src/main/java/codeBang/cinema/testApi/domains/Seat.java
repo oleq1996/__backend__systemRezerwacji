@@ -1,8 +1,6 @@
 package codeBang.cinema.testApi.domains;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="seats")
@@ -13,6 +11,7 @@ public class Seat {
     private Integer row;
     private Integer number;
     private String section;
+
 
     public Seat(Integer id, Integer row, Integer number, String section) {
         this.id = id;
