@@ -51,6 +51,9 @@ public class TestController {
                     new ResponseEntity<>(reservations, HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/reservation")
+    public List<Reservation> getAllReservations(){
+        return reservationService.getAllReservationData();
+    }
 
 }
