@@ -21,4 +21,5 @@ public class SeatService {
         seatRepository.findAll().forEach(allSeatData::add);
         return allSeatData;
     }
+
 }

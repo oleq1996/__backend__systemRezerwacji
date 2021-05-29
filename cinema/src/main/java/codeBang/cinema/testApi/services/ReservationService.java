@@ -1,20 +1,18 @@
 package codeBang.cinema.testApi.services;
 
 import codeBang.cinema.testApi.domains.Reservation;
-import codeBang.cinema.testApi.domains.Seat;
 import codeBang.cinema.testApi.dto.ReservationDto;
+import codeBang.cinema.testApi.dto.SeatDto;
 import codeBang.cinema.testApi.mapper.ReservationMapper;
+import codeBang.cinema.testApi.mapper.SeatMapper;
 import codeBang.cinema.testApi.repositories.ReservationRepository;
 import codeBang.cinema.testApi.repositories.SeatRepository;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.repository.query.parser.Part;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReservationService {
@@ -61,12 +59,13 @@ public class ReservationService {
         return null;
     }
 
-    public ReservationRepository getReservationRepository() {
-        return reservationRepository;
-    }
-
-    public SeatRepository getSeatRepository() {
-        return seatRepository;
+    public List<SeatDto> getReservedSeats(Integer playingId){
+        List<Reservation> reservations = reservationRepository.getReservationData(playingId);
+        List<SeatDto> reservedSeats = new ArrayList<>();
+        for(Reservation reservation : reservations){
+            reservedSeats.add(SeatMapper.parseToDto(seatRepository.findById(reservation.getSeat_id())));
+        }
+        return reservedSeats;
     }
 
 }
