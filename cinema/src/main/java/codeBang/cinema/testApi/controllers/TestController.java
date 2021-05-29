@@ -38,11 +38,6 @@ public class TestController {
         return playingService.getAllPlayingData();
     }
 
-    @GetMapping("/seats")
-    public List<Seat> getAllSeatData() {
-        return seatService.getAllSeatData();
-    }
-
     @PostMapping("/reservation")
     public ResponseEntity postNewReservation(@RequestBody List <ReservationDto> reservationDtoList){
         Iterable<Reservation> reservations = reservationService.postNewReservationList(reservationDtoList);
@@ -51,9 +46,13 @@ public class TestController {
                     new ResponseEntity<>(reservations, HttpStatus.CREATED);
     }
 
-    @GetMapping("/reservation")
-    public List<Reservation> getAllReservations(){
-        return reservationService.getAllReservationData();
+    @GetMapping("/reservation/{playingId}")
+    public ResponseEntity getReservationData(@PathVariable Integer playingId){
+        return new ResponseEntity<>(reservationService.getReservedSeats(playingId),HttpStatus.OK);
+    }
+    @GetMapping("/reservations")
+    public ResponseEntity getReservationData(){
+        return new ResponseEntity<>(reservationService.getAllReservationData(),HttpStatus.OK);
     }
 
 }
