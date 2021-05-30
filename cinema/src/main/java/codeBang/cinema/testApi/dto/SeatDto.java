@@ -3,7 +3,6 @@ package codeBang.cinema.testApi.dto;
 public class SeatDto {
     private Integer id;
     private Integer row;
-
     private Integer number;
     private String section;
 

@@ -16,13 +16,13 @@ public class Playing {
 
     @Id
     private Integer id;
-    private Integer video_id;
+    private Integer videoId;
     private String date;
     private String time;
 
-    public Playing(Integer id, Integer video_id, String date, String time) {
+    public Playing(Integer id, Integer videoId, String date, String time) {
         this.id = id;
-        this.video_id = video_id;
+        this.videoId = videoId;
         this.date = date;
         this.time = time;
     }
@@ -35,8 +35,8 @@ public class Playing {
         return id;
     }
 
-    public Integer getVideo_id() {
-        return video_id;
+    public Integer getVideoId() {
+        return videoId;
     }
 
     public String getDate() {
