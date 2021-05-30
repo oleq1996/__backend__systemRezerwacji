@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-@RequestMapping("cinema")
+//TODO zmienić na cinema !!!
+@RequestMapping("test")
 @RestController
 public class Rest {
 
@@ -31,17 +32,20 @@ public class Rest {
     @Autowired
     private PdfGeneratorService pdfGeneratorService;
 
+    @CrossOrigin
     @GetMapping("/videos")
     public ResponseEntity getAllVideoData() {
         return new ResponseEntity<>(videoService.getAllVideoData(),HttpStatus.OK);
 
     }
 
+    @CrossOrigin
     @GetMapping("/playing/")
     public ResponseEntity getAllPlayingData() {
         return new ResponseEntity<>(playingService.getAllPlayingData(),HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping(value = "/reservation",produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity postNewReservation(@RequestBody List <ReservationDto> reservationDtos){
         String reservationMail = reservationService.getReservationMail(reservationDtos);
@@ -70,16 +74,19 @@ public class Rest {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/reservation/{playingId}")
     public ResponseEntity getReservationData(@PathVariable Integer playingId){
         return new ResponseEntity<>(reservationService.getAllReservedSeats(playingId),HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/reservations")
     public ResponseEntity getAllReservationData(){
         return new ResponseEntity<>(reservationService.getAllReservationData(),HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/seats")
     public ResponseEntity getAllSeatsData(){
         return new ResponseEntity<>(seatService.getAllSeatData(),HttpStatus.OK);
