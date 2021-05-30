@@ -14,27 +14,27 @@ public class Video {
     private String genre;
     private String duration;
     private String description;
-    private Integer premiere_year;
-    private Integer age_restriction;
+    private Integer premiereYear;
+    private Integer ageRestriction;
     private Boolean subtitles;
     private Boolean dubbing;
     private String language;
-    private String url_poster;
-    private String url_trailer;
+    private String urlPoster;
+    private String urlTrailer;
 
-    public Video(Integer id, String title, String genre, String duration, String description, Integer premiere_year, Integer age_restriction, Boolean subtitles, Boolean dubbing, String language, String url_poster, String url_trailer) {
+    public Video(Integer id, String title, String genre, String duration, String description, Integer premiereYear, Integer ageRestriction, Boolean subtitles, Boolean dubbing, String language, String urlPoster, String urlTrailer) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.duration = duration;
         this.description = description;
-        this.premiere_year = premiere_year;
-        this.age_restriction = age_restriction;
+        this.premiereYear = premiereYear;
+        this.ageRestriction = ageRestriction;
         this.subtitles = subtitles;
         this.dubbing = dubbing;
         this.language = language;
-        this.url_poster = url_poster;
-        this.url_trailer = url_trailer;
+        this.urlPoster = urlPoster;
+        this.urlTrailer = urlTrailer;
     }
 
     public Video() {
@@ -61,12 +61,12 @@ public class Video {
         return description;
     }
 
-    public int getPremiere_year() {
-        return premiere_year;
+    public int getPremiereYear() {
+        return premiereYear;
     }
 
-    public int getAge_restriction() {
-        return age_restriction;
+    public int getAgeRestriction() {
+        return ageRestriction;
     }
 
     public boolean isSubtitles() {
@@ -81,11 +81,11 @@ public class Video {
         return language;
     }
 
-    public String getUrl_poster() {
-        return url_poster;
+    public String getUrlPoster() {
+        return urlPoster;
     }
 
-    public String getUrl_trailer() {
-        return url_trailer;
+    public String getUrlTrailer() {
+        return urlTrailer;
     }
 }

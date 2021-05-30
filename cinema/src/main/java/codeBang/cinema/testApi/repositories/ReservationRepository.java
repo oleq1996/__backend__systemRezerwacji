@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
 
-    @Query("SELECT r FROM Reservation r WHERE r.playing_id = ?1")
+    @Query("SELECT r FROM Reservation r WHERE r.playingId = ?1")
     List<Reservation> getReservationData(Integer playingId);
 }

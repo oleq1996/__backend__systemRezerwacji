@@ -1,6 +1,6 @@
 package codeBang.cinema.testApi.domains;
 
-import org.springframework.context.annotation.Lazy;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -10,27 +10,28 @@ import javax.persistence.*;
 public class Reservation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid",strategy = "uuid")
+    private String id;
     private String email;
-    private Integer playing_id;
-    private Integer seat_id;
+    private Integer playingId;
+    private Integer seatId;
 
-    public Reservation(String email, Integer playing_id, Integer seat_id) {
+    public Reservation(String email, Integer playingId, Integer seatId) {
         this.email = email;
-        this.playing_id = playing_id;
-        this.seat_id = seat_id;
+        this.playingId = playingId;
+        this.seatId = seatId;
     }
 
     public Reservation() {
 
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,19 +43,19 @@ public class Reservation {
         this.email = email;
     }
 
-    public Integer getPlaying_id() {
-        return playing_id;
+    public Integer getPlayingId() {
+        return playingId;
     }
 
-    public void setPlaying_id(Integer playing_id) {
-        this.playing_id = playing_id;
+    public void setPlayingId(Integer playing_id) {
+        this.playingId = playing_id;
     }
 
-    public void setSeat_id(Integer seat_id) {
-        this.seat_id = seat_id;
+    public void setSeatId(Integer seat_id) {
+        this.seatId = seat_id;
     }
 
-    public Integer getSeat_id() {
-        return seat_id;
+    public Integer getSeatId() {
+        return seatId;
     }
 }

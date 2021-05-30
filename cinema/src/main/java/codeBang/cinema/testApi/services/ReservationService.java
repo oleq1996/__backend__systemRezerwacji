@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class ReservationService {
@@ -32,7 +34,7 @@ public class ReservationService {
         return allReservationData;
     }
 
-    public Iterable<Reservation> postNewReservationList(List<ReservationDto> reservationDtoList){
+    public List<Reservation> postNewReservationList(List<ReservationDto> reservationDtoList){
         List<Reservation> reservationList = new ArrayList();
         boolean exist = false;
 
@@ -59,11 +61,24 @@ public class ReservationService {
         return null;
     }
 
-    public List<SeatDto> getReservedSeats(Integer playingId){
+    public String getReservationMail(List<ReservationDto> reservations){
+        String mail = reservations.get(0).getEmail();
+        return mail;
+    }
+
+    public List<SeatDto> getReservedSeats(List<Reservation> reservations){
+        List<SeatDto> reservedSeats = new ArrayList<>();
+        for(Reservation reservation : reservations){
+            reservedSeats.add(SeatMapper.parseToDto(seatRepository.findById(reservation.getSeatId())));
+        }
+        return reservedSeats;
+    }
+
+    public List<SeatDto> getAllReservedSeats(Integer playingId){
         List<Reservation> reservations = reservationRepository.getReservationData(playingId);
         List<SeatDto> reservedSeats = new ArrayList<>();
         for(Reservation reservation : reservations){
-            reservedSeats.add(SeatMapper.parseToDto(seatRepository.findById(reservation.getSeat_id())));
+            reservedSeats.add(SeatMapper.parseToDto(seatRepository.findById(reservation.getSeatId())));
         }
         return reservedSeats;
     }

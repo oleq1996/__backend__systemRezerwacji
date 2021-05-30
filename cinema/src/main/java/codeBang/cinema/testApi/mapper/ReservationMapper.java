@@ -7,10 +7,9 @@ public class ReservationMapper {
 
     public static ReservationDto parseToDto(Reservation reservation) {
             return new ReservationDto(reservation.getEmail(),
-                    reservation.getPlaying_id(),
-                    reservation.getSeat_id());
+                    reservation.getPlayingId(),
+                    reservation.getSeatId());
     }
-
 
     public static Reservation parseToEntity(ReservationDto reservationDto){
         return new Reservation(reservationDto.getEmail(),
