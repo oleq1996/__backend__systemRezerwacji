@@ -11,8 +11,16 @@ System oparty o architekturę klient-serwer. Umożliwia użytkownikowi zarezerwo
   * iText
 
 ## Endpointy
-//TODO
-## Projekt bazy danych
-Obecna testowa baza danych.
+* cinema/date (GET)
+* cinema/videos (GET)
+* cinema/videos/{videoId} (GET)
+* cinema/playing (GET)
+* cinema/playing/{date} (GET)
+* cinema//reservations (GET)
+* cinema/reservations (POST, wymagane body)
+* cinema/reservations/{playingId} (GET)
+* cinema/seats (GET)
 
-![image](https://user-images.githubusercontent.com/56149109/111000127-c55a9580-8381-11eb-8f31-98c5d893ae2e.png)
+## Projekt bazy danych
+
+![image](https://user-images.githubusercontent.com/56149109/120230203-22fad180-c24f-11eb-8748-994d950a6932.png)
