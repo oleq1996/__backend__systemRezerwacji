@@ -1,5 +1,7 @@
 package codeBang.cinema.packages.dto;
 
+import codeBang.cinema.packages.domains.Reservation;
+
 public class ReservationDto {
 
     private String email;
@@ -10,6 +12,12 @@ public class ReservationDto {
         this.email = email;
         this.playing_id = playing_id;
         this.seat_id = seat_id;
+    }
+
+    public ReservationDto(Reservation reservation) {
+        this.email = reservation.getEmail();
+        this.playing_id = reservation.getPlayingId();
+        this.seat_id = reservation.getSeatId();
     }
 
     public String getEmail() {

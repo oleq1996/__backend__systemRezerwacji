@@ -31,8 +31,8 @@ public class PdfGeneratorService {
             int id2 = playingRepository.findById(id1).get().getVideoId();
 
             String title = videoRepository.findById(id2).get().getTitle();
-            String date = playingRepository.findById(id1).get().getDate();
-            String time = playingRepository.findById(id1).get().getTime();
+            String date = playingRepository.findById(id1).get().getDate().toString();
+            String time = playingRepository.findById(id1).get().getTime().toString();
 
             Document document = new Document(PageSize.A4,50,50,50,50);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

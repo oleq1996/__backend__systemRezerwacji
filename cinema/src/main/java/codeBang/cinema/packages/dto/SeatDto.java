@@ -1,5 +1,7 @@
 package codeBang.cinema.packages.dto;
 
+import codeBang.cinema.packages.domains.Seat;
+
 public class SeatDto {
 
     private Integer id;
@@ -12,6 +14,13 @@ public class SeatDto {
         this.row = row;
         this.number = number;
         this.section = section;
+    }
+
+    public SeatDto(Seat seat) {
+        this.id = seat.getId();
+        this.row = seat.getRow();
+        this.number = seat.getNumber();
+        this.section = seat.getSection();
     }
 
     public Integer getId() {
