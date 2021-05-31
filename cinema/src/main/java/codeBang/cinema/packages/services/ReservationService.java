@@ -23,13 +23,19 @@ public class ReservationService {
     @Autowired
     private SeatRepository seatRepository;
 
-    public List<Reservation> getAllReservationData(){
+    public List<ReservationDto> getAllReservationData(){
         List<Reservation> allReservationData = new ArrayList<>();
+        List<ReservationDto> allReservationDataDto = new ArrayList<>();
+
         reservationRepository.findAll().forEach(allReservationData::add);
-        return allReservationData;
+        for(Reservation reservation : allReservationData){
+            allReservationDataDto.add(new ReservationDto(reservation));
+        }
+        return allReservationDataDto;
     }
 
     public List<Reservation> postNewReservationList(List<ReservationDto> reservationDtoList){
+
         List<Reservation> reservationList = new ArrayList();
         boolean exist = false;
 

@@ -1,6 +1,7 @@
 package codeBang.cinema.packages.controllers;
 
 import codeBang.cinema.packages.domains.*;
+import codeBang.cinema.packages.dto.DateDto;
 import codeBang.cinema.packages.dto.ReservationDto;
 import codeBang.cinema.packages.services.PdfGeneratorService;
 import codeBang.cinema.packages.services.*;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-//TODO zmienić na cinema !!!
-@RequestMapping("test")
+
+@RequestMapping("cinema")
 @RestController
 public class Rest {
 
@@ -32,21 +33,58 @@ public class Rest {
     @Autowired
     private PdfGeneratorService pdfGeneratorService;
 
+    // DATE ENDPOINT ***
+
+    @CrossOrigin
+    @GetMapping("/date")
+    public ResponseEntity getServerDate() {
+        return new ResponseEntity<>(new DateDto(),HttpStatus.OK);
+    }
+
+    // VIDEOS ENDPOINTS ***
+
     @CrossOrigin
     @GetMapping("/videos")
     public ResponseEntity getAllVideoData() {
         return new ResponseEntity<>(videoService.getAllVideoData(),HttpStatus.OK);
 
     }
+    @CrossOrigin
+    @GetMapping("/videos/{videoId}")
+    public ResponseEntity getVideoData(@PathVariable Integer videoId){
+        return new ResponseEntity<>(videoService.getVideoData(videoId),HttpStatus.OK);
+    }
+
+    // PLAYING ENDPOINTS ***
 
     @CrossOrigin
-    @GetMapping("/playing/")
+    @GetMapping("/playing")
     public ResponseEntity getAllPlayingData() {
         return new ResponseEntity<>(playingService.getAllPlayingData(),HttpStatus.OK);
     }
 
     @CrossOrigin
-    @PostMapping(value = "/reservation",produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping("/playing/{date}")
+    public ResponseEntity getPlayingData(@PathVariable String date) {
+        return new ResponseEntity<>(playingService.getPlayingData(date),HttpStatus.OK);
+    }
+
+    // RESERVATIONS ENDPOINTS ***
+
+    @CrossOrigin
+    @GetMapping("/reservations")
+    public ResponseEntity getAllReservationData(){
+        return new ResponseEntity<>(reservationService.getAllReservationData(),HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/reservations/{playingId}")
+    public ResponseEntity getReservedSeats(@PathVariable Integer playingId){
+        return new ResponseEntity<>(reservationService.getAllReservedSeats(playingId),HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/reservations",produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity postNewReservation(@RequestBody List <ReservationDto> reservationDtos){
         String reservationMail = reservationService.getReservationMail(reservationDtos);
 
@@ -74,17 +112,8 @@ public class Rest {
         }
     }
 
-    @CrossOrigin
-    @GetMapping("/reservation/{playingId}")
-    public ResponseEntity getReservationData(@PathVariable Integer playingId){
-        return new ResponseEntity<>(reservationService.getAllReservedSeats(playingId),HttpStatus.OK);
-    }
 
-    @CrossOrigin
-    @GetMapping("/reservations")
-    public ResponseEntity getAllReservationData(){
-        return new ResponseEntity<>(reservationService.getAllReservationData(),HttpStatus.OK);
-    }
+  // SEATS ENDPOINT ***
 
     @CrossOrigin
     @GetMapping("/seats")
